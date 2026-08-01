@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLens AI — Gemini-Powered Code Review</title>
+    <meta name="description" content="AI-powered code review as a service. Get instant, intelligent feedback on your code powered by Google Gemini.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo-icon">⟨/⟩</div>
+            <span class="logo-text">CodeLens <span class="accent">AI</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#demo">Try It</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#stats">Dashboard</a>
+        </div>
+        <div class="nav-cta">
+            <span class="badge-gemini">⚡ Powered by Gemini</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-badge">🏆 XPRIZE Build with Gemini</div>
+            <h1>Ship Better Code,<br><span class="gradient-text">10x Faster</span></h1>
+            <p class="hero-subtitle">AI-powered code review that catches bugs, security issues, and style problems before they reach production. Built with Google Gemini 2.0 Flash.</p>
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-primary">Try Free Review →</a>
+                <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-pill"><span class="stat-num" id="hero-reviews">0</span> Reviews</div>
+                <div class="stat-pill"><span class="stat-num" id="hero-lines">0</span> Lines Analyzed</div>
+                <div class="stat-pill"><span class="stat-num" id="hero-issues">0</span> Issues Found</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <h2 class="section-title">Why CodeLens AI?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Security Analysis</h3>
+                <p>Detects hardcoded secrets, SQL injection, XSS, and 200+ vulnerability patterns instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Performance Insights</h3>
+                <p>Identifies N+1 queries, memory leaks, and algorithmic bottlenecks before they hit production.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Style & Best Practices</h3>
+                <p>Enforces consistent coding standards across Python, JavaScript, TypeScript, Go, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>Gemini-Powered</h3>
+                <p>Leverages Google Gemini 2.0 Flash for deep understanding of code semantics and intent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo -->
+    <section id="demo" class="demo-section">
+        <h2 class="section-title">Try It Now — Free</h2>
+        <p class="section-desc">Paste your code below and get an AI-powered review in seconds.</p>
+        <div class="demo-container">
+            <div class="demo-input">
+                <div class="demo-header">
+                    <select id="language-select">
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="typescript">TypeScript</option>
+                        <option value="go">Go</option>
+                        <option value="java">Java</option>
+                        <option value="rust">Rust</option>
+                    </select>
+                    <button id="review-btn" class="btn btn-primary btn-sm" onclick="submitReview()">
+                        <span class="btn-text">🔍 Review Code</span>
+                        <span class="btn-loading" style="display:none">⏳ Analyzing...</span>
+                    </button>
+                </div>
+                <textarea id="code-input" placeholder="Paste your code here..." spellcheck="false">import sqlite3
+import os
+
+def get_user(username):
+    # TODO: add input validation
+    conn = sqlite3.connect('users.db')
+    query = f"SELECT * FROM users WHERE name = '{username}'"
+    result = conn.execute(query)
+    password = "admin123"
+    try:
+        data = result.fetchall()
+    except:
+        data = []
+    return data
+
+def process_data(items):
+    result = []
+    for i in range(len(items)):
+        for j in range(len(items)):
+            if items[i] == items[j] and i != j:
+                result.append(items[i])
+    return result</textarea>
+            </div>
+            <div class="demo-output" id="review-output">
+                <div class="output-placeholder">
+                    <div class="placeholder-icon">⟨/⟩</div>
+                    <p>Click "Review Code" to see AI analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <h2 class="section-title">Simple Pricing</h2>
+        <p class="section-desc">Start free, scale as you grow.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <div class="plan-price">$0<span>/mo</span></div>
+                <ul class="plan-features">
+                    <li>✅ 10 reviews/month</li>
+                    <li>✅ Basic analysis</li>
+                    <li>✅ Python & JavaScript</li>
+                    <li>❌ API access</li>
+                    <li>❌ GitHub integration</li>
+                </ul>
+                <button class="btn btn-secondary btn-full">Get Started</button>
+            </div>
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <div class="plan-name">Pro</div>
+                <div class="plan-price">$9<span>/mo</span></div>
+                <ul class="plan-features">
+                    <li>✅ 100 reviews/month</li>
+                    <li>✅ Deep analysis</li>
+                    <li>✅ All 6 languages</li>
+                    <li>✅ API access</li>
+                    <li>❌ GitHub integration</li>
+                </ul>
+                <button class="btn btn-primary btn-full">Start Pro Trial</button>
+            </div>
+            <div class="pricing-card">
+                <div class="plan-name">Team</div>
+                <div class="plan-price">$29<span>/mo</span></div>
+                <ul class="plan-features">
+                    <li>✅ Unlimited reviews</li>
+                    <li>✅ Deep analysis + CI/CD</li>
+                    <li>✅ All languages</li>
+                    <li>✅ API access</li>
+                    <li>✅ GitHub integration</li>
+                </ul>
+                <button class="btn btn-secondary btn-full">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Dashboard -->
+    <section id="stats" class="stats-section">
+        <h2 class="section-title">Live Dashboard</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-reviews">0</div>
+                <div class="stat-label">Total Reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-lines">0</div>
+                <div class="stat-label">Lines Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-issues">0</div>
+                <div class="stat-label">Issues Found</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-score">—</div>
+                <div class="stat-label">Avg Score</div>
+            </div>
+        </div>
+        <div class="recent-reviews" id="recent-reviews">
+            <h3>Recent Reviews</h3>
+            <div id="reviews-list" class="reviews-list"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-text">CodeLens <span class="accent">AI</span></span>
+                <p>Built with ❤️ and Google Gemini for XPRIZE</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/aldorizona10-glitch/xprize-gemini-codereview">GitHub</a>
+                <a href="https://ai.google.dev">Gemini API</a>
+                <a href="https://xprize.devpost.com">XPRIZE</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>
